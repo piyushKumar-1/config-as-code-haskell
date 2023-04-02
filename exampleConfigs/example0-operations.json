@@ -1,0 +1,46 @@
+{ "constants": {
+  "VALUE_1":                { "type": "NUMBER"        , "value": 10 },
+  "VALUE_2":                { "type": "NUMBER"        , "value": 20 },
+  "SOME_CONSTANT_NUMBER_1": { "type": "NUMBER"        , "value": 100 },
+  "SOME_CONSTANT_NUMBER_2": { "type": "NUMBER"        , "value": 200 }
+  },
+  "variables": {
+    "PRODUCT": {
+      "type": "NUMBER",
+      "operand": ["VALUE_1", "VALUE_2"],
+      "operator": "#multiply"
+    },
+    "SUM": {
+      "type": "NUMBER",
+      "operand": ["VALUE_1", "VALUE_2"],
+      "operator": "#add"
+    },
+    "DIFF": {
+      "type": "NUMBER",
+      "operand": ["VALUE_1", "VALUE_2"],
+      "operator": "#diff"
+    },
+    "IS_VALUE_1_SMALL": {
+      "type": "BOOL",
+      "operand": ["VALUE_1", "VALUE_2"],
+      "operator": "#lessThan"
+    },
+    "IS_VALUE_1_BIG": {
+      "type": "BOOL",
+      "operand": ["VALUE_1", "VALUE_2"],
+      "operator": "#greaterThan"
+    },
+    "CONDITIONAL_VARIABLE": {
+      "type": "NUMBER",
+      "operand": ["IS_VALUE_1_BIG", "SOME_CONSTANT_NUMBER_1", "SOME_CONSTANT_NUMBER_2"],
+      "operator": "#if"
+    }
+  },
+  "result": {
+    "multiply": "PRODUCT",
+    "addition": "SUM",
+    "difference": "DIFF",
+    "conditionalValue": "CONDITIONAL_VARIABLE"
+  },
+  "rateCardInfo": []
+}

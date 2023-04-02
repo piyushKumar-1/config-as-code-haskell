@@ -102,11 +102,12 @@ type Constants = M.Map String FareConstants
 type ConstantsHM = HM.Map String FareConstants
 type Variables = M.Map String FareVariables
 type VariablesHM = HM.Map String FareVariables
+type Results = M.Map String String
 
 data FareConfig = FareConfig 
   { constants :: Constants 
   , variables :: Variables
-  , finalFare :: String 
+  , result :: Results
   , rateCardInfo :: [RateCardEntry]
   } deriving (Generic, Show, FromJSON, ToJSON)
 
@@ -174,7 +175,7 @@ calculate finalParam _constants _variables distance now = do
           LESS_THAN    -> BOOL_ $ case operandValues of 
                                     [a, b] -> a < b
                                     _ -> error $ "wrong number of arguments for #lessThan: " <> show operandValues
-          IF_TIME_BETWEEN   -> BOOL_ $ case operandValues of 
+          IF_TIME_BETWEEN -> BOOL_ $ case operandValues of 
                                     [TIME_OF_DAY_ startTime, TIME_OF_DAY_ time, TIME_OF_DAY_ endTime] -> isTimeWithinBounds startTime endTime time
                                     _ -> error $ "Got wrong parameters for #ifTimeBetween: " <> show operandValues
 

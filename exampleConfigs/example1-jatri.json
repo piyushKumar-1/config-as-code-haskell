@@ -1,5 +1,4 @@
 { "constants": {
-    "SLAB_1_DISTANCE":         { "type": "NUMBER"        , "value": -1 },
     "SLAB_1_BASE_FARE":        { "type": "NUMBER"        , "value": 30 },
     "SLAB_1_NIGHT_CHARGE":     { "type": "NUMBER"        , "value": 5 },
     "SLAB_1_WAITING_CHARGE":   { "type": "NUMBER"        , "value": 15 },
@@ -73,11 +72,6 @@
       "type": "BOOL",
       "operand": ["NIGHT_TIME_START", "{#CURRENT_TIME#}", "NIGHT_TIME_END"],
       "operator": "#ifTimeBetween"
-    },
-    "IS_SLAB_1": {
-      "type": "BOOL",
-      "operand": ["SLAB_1_DISTANCE", "{#DISTANCE#}"],
-      "operator": "#lessThan"
     },
     "IS_SLAB_2": {
       "type": "BOOL",
@@ -410,7 +404,10 @@
       "operator": "#add"
     }
   },
-  "finalFare": "FINAL_FARE",
+  "result": {
+    "minFare": "FINAL_FARE",
+    "maxFare": "FINAL_FARE"
+  },
   "rateCardInfo": [ 
     { "title": "Rate above Min. Fare",
       "value": "#PER_KM_FARE",

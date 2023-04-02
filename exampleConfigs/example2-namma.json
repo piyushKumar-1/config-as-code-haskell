@@ -1,14 +1,25 @@
 { "constants": {
-    "DEFAULT_EXTRA_KM":   { "type": "NUMBER"        , "value": 0 },
-    "DEAD_KM_FARE":       { "type": "NUMBER"        , "value": 10 },
-    "BASE_DISTANCE":      { "type": "NUMBER"        , "value": 2000 },
-    "BASE_DISTANCE_FARE": { "type": "NUMBER"        , "value": 30 },
-    "NIGHT_CAHRGE_RATE":  { "type": "NUMBER"        , "value": 1.5 },
-    "NIGHT_TIME_START":   { "type": "TIME_OF_DAY", "value": "22:30:00" },
-    "NIGHT_TIME_END":     { "type": "TIME_OF_DAY", "value": "04:30:00" },
-    "PER_KM_FARE":        { "type": "NUMBER"        , "value": 15 },
-    "DRIVER_MAX_FEE":     { "type": "NUMBER"        , "value": 20},
-    "METERS_IN_KM":       { "type": "NUMBER"        , "value": 1000}
+    "DEFAULT_EXTRA_KM":             { "type": "NUMBER"        , "value": 0 },
+    "DEAD_KM_FARE":                 { "type": "NUMBER"        , "value": 10 },
+    "BASE_DISTANCE":                { "type": "NUMBER"        , "value": 2000 },
+    "BASE_DISTANCE_FARE":           { "type": "NUMBER"        , "value": 30 },
+    "NIGHT_CAHRGE_RATE":            { "type": "NUMBER"        , "value": 1.5 },
+    "NIGHT_TIME_START":             { "type": "TIME_OF_DAY", "value": "22:30:00" },
+    "NIGHT_TIME_END":               { "type": "TIME_OF_DAY", "value": "04:30:00" },
+    "PER_KM_FARE":                  { "type": "NUMBER"        , "value": 15 },
+    "DRIVER_MAX_FEE":               { "type": "NUMBER"        , "value": 20},
+    "METERS_IN_KM":                 { "type": "NUMBER"        , "value": 1000},
+    "DISTANCE_0_ALLOWED_EXTRA_FEE": { "type": "NUMBER"        , "value": 0},
+    "MIN_DISTANCE_1":               { "type": "NUMBER"        , "value": 5000},
+    "DISTANCE_1_ALLOWED_EXTRA_FEE": { "type": "NUMBER"        , "value": 10},
+    "MIN_DISTANCE_2":               { "type": "NUMBER"        , "value": 9000},
+    "DISTANCE_2_ALLOWED_EXTRA_FEE": { "type": "NUMBER"        , "value": 20},
+    "MIN_DISTANCE_3":               { "type": "NUMBER"        , "value": 16000},
+    "DISTANCE_3_ALLOWED_EXTRA_FEE": { "type": "NUMBER"        , "value": 30},
+    "MIN_DISTANCE_4":               { "type": "NUMBER"        , "value": 23000},
+    "DISTANCE_4_ALLOWED_EXTRA_FEE": { "type": "NUMBER"        , "value": 40},
+    "MIN_DISTANCE_5":               { "type": "NUMBER"        , "value": 29000},
+    "DISTANCE_5_ALLOWED_EXTRA_FEE": { "type": "NUMBER"        , "value": 50}
   },
   "variables": {
     "_EXTRA_METERS": {
@@ -51,13 +62,78 @@
       "operand": ["IS_NIGHT","TOTAL_FARE_WITH_NIGHT_CHANGE", "TOTAL_FARE"],
       "operator": "#if"
     },
-    "FINAL_FARE": {
+    "IS_DISTNACE_1": {
+      "type": "BOOL",
+      "operand": ["MIN_DISTANCE_1","{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_DISTNACE_2": {
+      "type": "BOOL",
+      "operand": ["MIN_DISTANCE_2","{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_DISTNACE_3": {
+      "type": "BOOL",
+      "operand": ["MIN_DISTANCE_3","{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_DISTNACE_4": {
+      "type": "BOOL",
+      "operand": ["MIN_DISTANCE_4","{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_DISTNACE_5": {
+      "type": "BOOL",
+      "operand": ["MIN_DISTANCE_5","{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "CHECK_DISTANCE_1": {
+      "type": "NUMBER",
+      "operand": ["IS_DISTNACE_1","DISTANCE_1_ALLOWED_EXTRA_FEE", "DISTANCE_0_ALLOWED_EXTRA_FEE"],
+      "operator": "#if"
+    },
+    "CHECK_DISTANCE_2": {
+      "type": "NUMBER",
+      "operand": ["IS_DISTNACE_2","DISTANCE_2_ALLOWED_EXTRA_FEE", "CHECK_DISTANCE_1"],
+      "operator": "#if"
+    },
+    "CHECK_DISTANCE_3": {
+      "type": "NUMBER",
+      "operand": ["IS_DISTNACE_3","DISTANCE_3_ALLOWED_EXTRA_FEE", "CHECK_DISTANCE_2"],
+      "operator": "#if"
+    },
+    "CHECK_DISTANCE_4": {
+      "type": "NUMBER",
+      "operand": ["IS_DISTNACE_4","DISTANCE_4_ALLOWED_EXTRA_FEE", "CHECK_DISTANCE_3"],
+      "operator": "#if"
+    },
+    "CHECK_DISTANCE_5": {
+      "type": "NUMBER",
+      "operand": ["IS_DISTNACE_5","DISTANCE_5_ALLOWED_EXTRA_FEE", "CHECK_DISTANCE_4"],
+      "operator": "#if"
+    },
+    "MAX_FEE_BASED_ON_RIDE_DISTANCE": {
+      "type": "NUMBER",
+      "operand": ["CHECK_DISTANCE_5"],
+      "operator": "#add"
+    },
+    "FINAL_MIN_FARE": {
       "type": "NUMBER",
       "operand": ["TIME_BASED_FARE","DEAD_KM_FARE"],
       "operator": "#add"
+    },
+    "FINAL_MAX_FARE": {
+      "type": "NUMBER",
+      "operand": ["FINAL_MIN_FARE","MAX_FEE_BASED_ON_RIDE_DISTANCE"],
+      "operator": "#add"
     }
   },
-  "finalFare": "FINAL_FARE",
+  "result": {
+    "minFare": "FINAL_MIN_FARE",
+    "maxFare": "FINAL_MAX_FARE",
+    "extraKm": "EXTRA_KM",
+    "extraKmFare": "EXTRA_KM_FARE"
+  },
   "rateCardInfo": [ 
     { "title": "Rate above Min. Fare",
       "value": "#PER_KM_FARE",

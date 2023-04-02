@@ -4,8 +4,8 @@ module Main (main) where
 
 import Lib as L
 import qualified Data.Aeson as A
+import qualified Data.Map as M
 import System.Environment
-
 
 main :: IO ()
 main = do 
@@ -18,7 +18,7 @@ main = do
   case file of 
     Left err -> print err 
     Right fareConfig -> do 
-      res <- L.calculateFare fareConfig distance (finalFare fareConfig) 
+      res <- sequence $ M.map (L.calculateFare fareConfig distance) (result fareConfig) 
       print res
 
 
