@@ -1,0 +1,79 @@
+{ "constants": {
+    "DEFAULT_EXTRA_KM":   { "type": "NUMBER"        , "value": 0 },
+    "DEAD_KM_FARE":       { "type": "NUMBER"        , "value": 10 },
+    "BASE_DISTANCE":      { "type": "NUMBER"        , "value": 2000 },
+    "BASE_DISTANCE_FARE": { "type": "NUMBER"        , "value": 30 },
+    "NIGHT_CAHRGE_RATE":  { "type": "NUMBER"        , "value": 1.5 },
+    "NIGHT_TIME_START":   { "type": "TIME_OF_DAY", "value": "22:30:00" },
+    "NIGHT_TIME_END":     { "type": "TIME_OF_DAY", "value": "04:30:00" },
+    "PER_KM_FARE":        { "type": "NUMBER"        , "value": 15 },
+    "DRIVER_MAX_FEE":     { "type": "NUMBER"        , "value": 20},
+    "METERS_IN_KM":       { "type": "NUMBER"        , "value": 1000}
+  },
+  "variables": {
+    "_EXTRA_METERS": {
+      "type": "NUMBER",
+      "operand": ["{#DISTANCE#}", "BASE_DISTANCE"],
+      "operator": "#diff"
+    },
+    "EXTRA_METERS": {
+      "type": "BOOL",
+      "operand": ["DEFAULT_EXTRA_KM", "_EXTRA_METERS"],
+      "operator": "#max"
+    },
+    "EXTRA_KM": {
+      "type": "NUMBER",
+      "operand": ["EXTRA_METERS","METERS_IN_KM"],
+      "operator": "#div"
+    },
+    "EXTRA_KM_FARE": {
+      "type": "NUMBER",
+      "operand": ["EXTRA_KM","PER_KM_FARE"],
+      "operator": "#multiply"
+    },
+    "IS_NIGHT": {
+      "type": "BOOL",
+      "operand": ["NIGHT_TIME_START", "{#CURRENT_TIME#}", "NIGHT_TIME_END"],
+      "operator": "#ifTimeBetween"
+    },
+    "TOTAL_FARE": {
+      "type": "NUMBER",
+      "operand": ["EXTRA_KM_FARE", "BASE_DISTANCE_FARE"],
+      "operator": "#add"
+    },
+    "TOTAL_FARE_WITH_NIGHT_CHANGE": {
+      "type": "NUMBER",
+      "operand": ["TOTAL_FARE", "NIGHT_CAHRGE_RATE"],
+      "operator": "#multiply"
+    },
+    "TIME_BASED_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_NIGHT","TOTAL_FARE_WITH_NIGHT_CHANGE", "TOTAL_FARE"],
+      "operator": "#if"
+    },
+    "FINAL_FARE": {
+      "type": "NUMBER",
+      "operand": ["TIME_BASED_FARE","DEAD_KM_FARE"],
+      "operator": "#add"
+    }
+  },
+  "finalFare": "FINAL_FARE",
+  "rateCardInfo": [ 
+    { "title": "Rate above Min. Fare",
+      "value": "#PER_KM_FARE",
+      "label": "PER_KM_FARE"
+    },
+    { "title": "#NIGHT_CAHRGE_RATE x of daytime charge applicable at night from #NIGHT_TIME_START AM to #NIGHT_TIME_END PM.",
+      "value": "#NIGHT_CAHRGE_RATE",
+      "label": "NIGHT_CAHRGE_RATE"
+    },
+    { "title": "Driver Pickup Charges",
+      "value": "#DEAD_KM_FARE",
+      "label": "DRIVER_PICKUP_CHARGES"
+    },
+    { "title": "Noninal Fare*",
+      "value": "upto #DRIVER_MAX_FEE",
+      "label": "DRIVER_MAX_FEE"
+    }
+  ]
+}

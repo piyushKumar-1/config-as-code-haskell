@@ -1,0 +1,20 @@
+{ "constants": {
+    "DEFAULT_EXTRA_KM":   { "type": "NUMBER" , "value": 100 }
+  },
+  "variables": {
+    "RESULT": {
+      "type": "NUMBER",
+      "polyfill": "DISTANCE",
+      "operand": ["{#DISTANCE#}", "DEFAULT_EXTRA_KM"],
+      "operator": "#add"
+    },
+    "RESULT2": {
+      "type": "NUMBER",
+      "polyfill": "DISTANCE",
+      "operand": ["RESULT", "DEFAULT_EXTRA_KM"],
+      "operator": "#multiply"
+    }
+  },
+  "finalFare": "RESULT2",
+  "rateCardInfo": []
+}

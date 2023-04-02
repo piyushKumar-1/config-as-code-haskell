@@ -1,0 +1,432 @@
+{ "constants": {
+    "SLAB_1_DISTANCE":         { "type": "NUMBER"        , "value": -1 },
+    "SLAB_1_BASE_FARE":        { "type": "NUMBER"        , "value": 30 },
+    "SLAB_1_NIGHT_CHARGE":     { "type": "NUMBER"        , "value": 5 },
+    "SLAB_1_WAITING_CHARGE":   { "type": "NUMBER"        , "value": 15 },
+    "SLAB_2_DISTANCE":         { "type": "NUMBER"        , "value": 1999 },
+    "SLAB_2_BASE_FARE":        { "type": "NUMBER"        , "value": 60 },
+    "SLAB_2_NIGHT_CHARGE":     { "type": "NUMBER"        , "value": 10 },
+    "SLAB_2_WAITING_CHARGE":   { "type": "NUMBER"        , "value": 15 },
+    "SLAB_3_DISTANCE":         { "type": "NUMBER"        , "value": 3999 },
+    "SLAB_3_BASE_FARE":        { "type": "NUMBER"        , "value": 90 },
+    "SLAB_3_NIGHT_CHARGE":     { "type": "NUMBER"        , "value": 15 },
+    "SLAB_3_WAITING_CHARGE":   { "type": "NUMBER"        , "value": 15 },
+    "SLAB_4_DISTANCE":         { "type": "NUMBER"        , "value": 5999 },
+    "SLAB_4_BASE_FARE":        { "type": "NUMBER"        , "value": 120 },
+    "SLAB_4_NIGHT_CHARGE":     { "type": "NUMBER"        , "value": 20 },
+    "SLAB_4_WAITING_CHARGE":   { "type": "NUMBER"        , "value": 20 },
+    "SLAB_5_DISTANCE":         { "type": "NUMBER"        , "value": 7999 },
+    "SLAB_5_BASE_FARE":        { "type": "NUMBER"        , "value": 150 },
+    "SLAB_5_NIGHT_CHARGE":     { "type": "NUMBER"        , "value": 20 },
+    "SLAB_5_WAITING_CHARGE":   { "type": "NUMBER"        , "value": 25 },
+    "SLAB_6_DISTANCE":         { "type": "NUMBER"        , "value": 9999 },
+    "SLAB_6_BASE_FARE":        { "type": "NUMBER"        , "value": 180 },
+    "SLAB_6_NIGHT_CHARGE":     { "type": "NUMBER"        , "value": 20 },
+    "SLAB_6_WAITING_CHARGE":   { "type": "NUMBER"        , "value": 30 },
+    "SLAB_7_DISTANCE":         { "type": "NUMBER"        , "value": 11999 },
+    "SLAB_7_BASE_FARE":        { "type": "NUMBER"        , "value": 210 },
+    "SLAB_7_NIGHT_CHARGE":     { "type": "NUMBER"        , "value": 20 },
+    "SLAB_7_WAITING_CHARGE":   { "type": "NUMBER"        , "value": 35 },
+    "SLAB_8_DISTANCE":         { "type": "NUMBER"        , "value": 13999 },
+    "SLAB_8_BASE_FARE":        { "type": "NUMBER"        , "value": 240 },
+    "SLAB_8_NIGHT_CHARGE":     { "type": "NUMBER"        , "value": 20 },
+    "SLAB_8_WAITING_CHARGE":   { "type": "NUMBER"        , "value": 40 },
+    "SLAB_9_DISTANCE":         { "type": "NUMBER"        , "value": 15999 },
+    "SLAB_9_BASE_FARE":        { "type": "NUMBER"        , "value": 270 },
+    "SLAB_9_NIGHT_CHARGE":     { "type": "NUMBER"        , "value": 20 },
+    "SLAB_9_WAITING_CHARGE":   { "type": "NUMBER"        , "value": 40 },
+    "SLAB_10_DISTANCE":        { "type": "NUMBER"        , "value": 17999 },
+    "SLAB_10_BASE_FARE":       { "type": "NUMBER"        , "value": 300 },
+    "SLAB_10_NIGHT_CHARGE":    { "type": "NUMBER"        , "value": 20 },
+    "SLAB_10_WAITING_CHARGE":  { "type": "NUMBER"        , "value": 50 },
+    "SLAB_11_DISTANCE":        { "type": "NUMBER"        , "value": 19999 },
+    "SLAB_11_BASE_FARE":       { "type": "NUMBER"        , "value": 345 },
+    "SLAB_11_NIGHT_CHARGE":    { "type": "NUMBER"        , "value": 20 },
+    "SLAB_11_WAITING_CHARGE":  { "type": "NUMBER"        , "value": 55 },
+    "SLAB_12_DISTANCE":        { "type": "NUMBER"        , "value": 22999 },
+    "SLAB_12_BASE_FARE":       { "type": "NUMBER"        , "value": 390 },
+    "SLAB_12_NIGHT_CHARGE":    { "type": "NUMBER"        , "value": 20 },
+    "SLAB_12_WAITING_CHARGE":  { "type": "NUMBER"        , "value": 60 },
+    "SLAB_13_DISTANCE":        { "type": "NUMBER"        , "value": 25999 },
+    "SLAB_13_BASE_FARE":       { "type": "NUMBER"        , "value": 435 },
+    "SLAB_13_NIGHT_CHARGE":    { "type": "NUMBER"        , "value": 20 },
+    "SLAB_13_WAITING_CHARGE":  { "type": "NUMBER"        , "value": 65 },
+    "SLAB_14_DISTANCE":        { "type": "NUMBER"        , "value": 28999 },
+    "SLAB_14_BASE_FARE":       { "type": "NUMBER"        , "value": 480 },
+    "SLAB_14_NIGHT_CHARGE":    { "type": "NUMBER"        , "value": 20 },
+    "SLAB_14_WAITING_CHARGE":  { "type": "NUMBER"        , "value": 75 },
+    "SLAB_15_DISTANCE":        { "type": "NUMBER"        , "value": 31999 },
+    "SLAB_15_BASE_FARE":       { "type": "NUMBER"        , "value": 525 },
+    "SLAB_15_NIGHT_CHARGE":    { "type": "NUMBER"        , "value": 20 },
+    "SLAB_15_WAITING_CHARGE":  { "type": "NUMBER"        , "value": 80 },
+    "SLAB_16_DISTANCE":        { "type": "NUMBER"        , "value": 34999 },
+    "SLAB_16_BASE_FARE":       { "type": "NUMBER"        , "value": 570 },
+    "SLAB_16_NIGHT_CHARGE":    { "type": "NUMBER"        , "value": 20 },
+    "SLAB_16_WAITING_CHARGE":  { "type": "NUMBER"        , "value": 90 },
+    "SERVICE_CHARGES":         { "type": "NUMBER"        , "value": 10 },
+    "GOVT_CHARGE_FACTOR":      { "type": "NUMBER"        , "value": 0.20 },
+    "NIGHT_TIME_START":        { "type": "TIME_OF_DAY", "value": "22:30:00" },
+    "NIGHT_TIME_END":          { "type": "TIME_OF_DAY", "value": "04:30:00" }
+  },
+  "variables": {
+    "IS_NIGHT" :{
+      "type": "BOOL",
+      "operand": ["NIGHT_TIME_START", "{#CURRENT_TIME#}", "NIGHT_TIME_END"],
+      "operator": "#ifTimeBetween"
+    },
+    "IS_SLAB_1": {
+      "type": "BOOL",
+      "operand": ["SLAB_1_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_SLAB_2": {
+      "type": "BOOL",
+      "operand": ["SLAB_2_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_SLAB_3": {
+      "type": "BOOL",
+      "operand": ["SLAB_3_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_SLAB_4": {
+      "type": "BOOL",
+      "operand": ["SLAB_4_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_SLAB_5": {
+      "type": "BOOL",
+      "operand": ["SLAB_5_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_SLAB_6": {
+      "type": "BOOL",
+      "operand": ["SLAB_6_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_SLAB_7": {
+      "type": "BOOL",
+      "operand": ["SLAB_7_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_SLAB_8": {
+      "type": "BOOL",
+      "operand": ["SLAB_8_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_SLAB_9": {
+      "type": "BOOL",
+      "operand": ["SLAB_9_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_SLAB_10": {
+      "type": "BOOL",
+      "operand": ["SLAB_10_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_SLAB_11": {
+      "type": "BOOL",
+      "operand": ["SLAB_11_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_SLAB_12": {
+      "type": "BOOL",
+      "operand": ["SLAB_12_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_SLAB_13": {
+      "type": "BOOL",
+      "operand": ["SLAB_13_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_SLAB_14": {
+      "type": "BOOL",
+      "operand": ["SLAB_14_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_SLAB_15": {
+      "type": "BOOL",
+      "operand": ["SLAB_15_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    },
+    "IS_SLAB_16": {
+      "type": "BOOL",
+      "operand": ["SLAB_16_DISTANCE", "{#DISTANCE#}"],
+      "operator": "#lessThan"
+    }, 
+    "CHECK_SLAB_2_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_SLAB_2", "SLAB_2_BASE_FARE", "SLAB_1_BASE_FARE"],
+      "operator": "#if"
+    },
+    "CHECK_SLAB_3_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_SLAB_3", "SLAB_3_BASE_FARE", "CHECK_SLAB_2_BASE_FARE"],
+      "operator": "#if"
+    },
+    "CHECK_SLAB_4_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_SLAB_4", "SLAB_4_BASE_FARE", "CHECK_SLAB_3_BASE_FARE"],
+      "operator": "#if"
+    },
+    "CHECK_SLAB_5_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_SLAB_5", "SLAB_5_BASE_FARE", "CHECK_SLAB_4_BASE_FARE"],
+      "operator": "#if"
+    },
+    "CHECK_SLAB_6_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_SLAB_6", "SLAB_6_BASE_FARE", "CHECK_SLAB_5_BASE_FARE"],
+      "operator": "#if"
+    },
+    "CHECK_SLAB_7_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_SLAB_7", "SLAB_7_BASE_FARE", "CHECK_SLAB_6_BASE_FARE"],
+      "operator": "#if"
+    },
+    "CHECK_SLAB_8_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_SLAB_8", "SLAB_8_BASE_FARE", "CHECK_SLAB_7_BASE_FARE"],
+      "operator": "#if"
+    },
+    "CHECK_SLAB_9_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_SLAB_9", "SLAB_9_BASE_FARE", "CHECK_SLAB_8_BASE_FARE"],
+      "operator": "#if"
+    },
+    "CHECK_SLAB_10_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_SLAB_10", "SLAB_10_BASE_FARE", "CHECK_SLAB_9_BASE_FARE"],
+      "operator": "#if"
+    },
+    "CHECK_SLAB_11_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_SLAB_11", "SLAB_11_BASE_FARE", "CHECK_SLAB_10_BASE_FARE"],
+      "operator": "#if"
+    },
+    "CHECK_SLAB_12_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_SLAB_12", "SLAB_12_BASE_FARE", "CHECK_SLAB_11_BASE_FARE"],
+      "operator": "#if"
+    },
+    "CHECK_SLAB_13_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_SLAB_13", "SLAB_13_BASE_FARE", "CHECK_SLAB_12_BASE_FARE"],
+      "operator": "#if"
+    },
+    "CHECK_SLAB_14_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_SLAB_14", "SLAB_14_BASE_FARE", "CHECK_SLAB_13_BASE_FARE"],
+      "operator": "#if"
+    },
+    "CHECK_SLAB_15_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_SLAB_15", "SLAB_15_BASE_FARE", "CHECK_SLAB_14_BASE_FARE"],
+      "operator": "#if"
+    },
+    "CHECK_SLAB_16_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_SLAB_16", "SLAB_16_BASE_FARE", "CHECK_SLAB_15_BASE_FARE"],
+      "operator": "#if"
+    },
+	  "CHECK_SLAB_2_NIGHT_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_2", "SLAB_2_NIGHT_CHARGE", "SLAB_1_NIGHT_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_3_NIGHT_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_3", "SLAB_3_NIGHT_CHARGE", "CHECK_SLAB_2_NIGHT_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_4_NIGHT_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_4", "SLAB_4_NIGHT_CHARGE", "CHECK_SLAB_3_NIGHT_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_5_NIGHT_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_5", "SLAB_5_NIGHT_CHARGE", "CHECK_SLAB_4_NIGHT_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_6_NIGHT_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_6", "SLAB_6_NIGHT_CHARGE", "CHECK_SLAB_5_NIGHT_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_7_NIGHT_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_7", "SLAB_7_NIGHT_CHARGE", "CHECK_SLAB_6_NIGHT_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_8_NIGHT_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_8", "SLAB_8_NIGHT_CHARGE", "CHECK_SLAB_7_NIGHT_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_9_NIGHT_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_9", "SLAB_9_NIGHT_CHARGE", "CHECK_SLAB_8_NIGHT_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_10_NIGHT_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_10", "SLAB_10_NIGHT_CHARGE", "CHECK_SLAB_9_NIGHT_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_11_NIGHT_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_11", "SLAB_11_NIGHT_CHARGE", "CHECK_SLAB_10_NIGHT_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_12_NIGHT_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_12", "SLAB_12_NIGHT_CHARGE", "CHECK_SLAB_11_NIGHT_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_13_NIGHT_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_13", "SLAB_13_NIGHT_CHARGE", "CHECK_SLAB_12_NIGHT_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_14_NIGHT_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_14", "SLAB_14_NIGHT_CHARGE", "CHECK_SLAB_13_NIGHT_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_15_NIGHT_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_15", "SLAB_15_NIGHT_CHARGE", "CHECK_SLAB_14_NIGHT_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_16_NIGHT_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_16", "SLAB_16_NIGHT_CHARGE", "CHECK_SLAB_15_NIGHT_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_2_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_2", "SLAB_2_WAITING_CHARGE", "SLAB_1_WAITING_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_3_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_3", "SLAB_3_WAITING_CHARGE", "CHECK_SLAB_2_WAITING_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_4_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_4", "SLAB_4_WAITING_CHARGE", "CHECK_SLAB_3_WAITING_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_5_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_5", "SLAB_5_WAITING_CHARGE", "CHECK_SLAB_4_WAITING_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_6_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_6", "SLAB_6_WAITING_CHARGE", "CHECK_SLAB_5_WAITING_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_7_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_7", "SLAB_7_WAITING_CHARGE", "CHECK_SLAB_6_WAITING_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_8_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_8", "SLAB_8_WAITING_CHARGE", "CHECK_SLAB_7_WAITING_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_9_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_9", "SLAB_9_WAITING_CHARGE", "CHECK_SLAB_8_WAITING_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_10_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_10", "SLAB_10_WAITING_CHARGE", "CHECK_SLAB_9_WAITING_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_11_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_11", "SLAB_11_WAITING_CHARGE", "CHECK_SLAB_10_WAITING_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_12_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_12", "SLAB_12_WAITING_CHARGE", "CHECK_SLAB_11_WAITING_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_13_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_13", "SLAB_13_WAITING_CHARGE", "CHECK_SLAB_12_WAITING_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_14_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_14", "SLAB_14_WAITING_CHARGE", "CHECK_SLAB_13_WAITING_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_15_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_15", "SLAB_15_WAITING_CHARGE", "CHECK_SLAB_14_WAITING_CHARGE"],
+	    "operator": "#if"
+	  },
+	  "CHECK_SLAB_16_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["IS_SLAB_16", "SLAB_16_WAITING_CHARGE", "CHECK_SLAB_15_WAITING_CHARGE"],
+	    "operator": "#if"
+	  },
+    "SELECTED_SLAB_BASE_FARE": {
+      "type": "NUMBER",
+      "operand": ["CHECK_SLAB_16_BASE_FARE"],
+      "operator": "#add"
+    },
+	  "SELECTED_SLAB_WAITING_CHARGE": {
+	    "type": "NUMBER",
+	    "operand": ["CHECK_SLAB_16_WAITING_CHARGE"],
+	    "operator": "#add"
+	  },
+    "SELECTED_SLAB_NIGHT_CHARGE": {
+      "type": "NUMBER",
+      "operand": ["CHECK_SLAB_16_NIGHT_CHARGE"],
+      "operator": "#add"
+    },
+    "SELECTED_SLAB_GOVT_CHARGES": {
+	    "type": "NUMBER",
+	    "operand": ["SELECTED_SLAB_BASE_FARE", "GOVT_CHARGE_FACTOR"],
+	    "operator": "#multiply"
+	  },
+    "SELECTED_SLAB_TIME_RESOLVED_FARE": {
+      "type": "NUMBER",
+      "operand": ["IS_NIGHT", "SELECTED_SLAB_NIGHT_CHARGE", "SELECTED_SLAB_BASE_FARE"],
+      "operator": "#if"
+    },
+    "FINAL_FARE": {
+      "type": "NUMBER",
+      "operand": ["SELECTED_SLAB_TIME_RESOLVED_FARE", "SELECTED_SLAB_GOVT_CHARGES", "SELECTED_SLAB_WAITING_CHARGE", "SERVICE_CHARGES"],
+      "operator": "#add"
+    }
+  },
+  "finalFare": "FINAL_FARE",
+  "rateCardInfo": [ 
+    { "title": "Rate above Min. Fare",
+      "value": "#PER_KM_FARE",
+      "label": "PER_KM_FARE"
+    },
+    { "title": "#NIGHT_CAHRGE_RATE x of daytime charge applicable at night from #NIGHT_TIME_START AM to #NIGHT_TIME_END PM.",
+      "value": "#NIGHT_CAHRGE_RATE",
+      "label": "NIGHT_CAHRGE_RATE"
+    },
+    { "title": "Driver Pickup Charges",
+      "value": "#DEAD_KM_FARE",
+      "label": "DRIVER_PICKUP_CHARGES"
+    },
+    { "title": "Noninal Fare*",
+      "value": "upto #DRIVER_MAX_FEE",
+      "label": "DRIVER_MAX_FEE"
+    }
+  ]
+}
